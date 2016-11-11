@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Counter</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row center>
+      <ion-col >
+        <ion-buttons>
+          <button ion-button class="sign" (click)="increment()">+</button>
+          <button ion-button (click)="incrementAsync()">Increment<br/>Async</button>
+        </ion-buttons>
+        <ion-buttons>
+          <button ion-button class="sign" (click)="decrement()">-</button>
+          <button ion-button (click)="decrementAsync()">Decrement<br/>Async</button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col width-33>
+        <div style="text-align:center; font-size:4em; font-weight: bold">{{counter | async}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
