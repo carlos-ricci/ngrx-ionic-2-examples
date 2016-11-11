@@ -7,7 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StoreModule } from '@ngrx/store';
-import * as APP_REDUCERS from './reducers/reducers';
+import { todos } from './reducers/todos';
+import { visibilityFilter } from './reducers/visibility-filter';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import * as APP_REDUCERS from './reducers/reducers';
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    StoreModule.provideStore(APP_REDUCERS)
+    StoreModule.provideStore({todos: todos, visibilityFilter: visibilityFilter})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
