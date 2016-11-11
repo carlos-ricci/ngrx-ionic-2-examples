@@ -12,10 +12,7 @@ import { counterReducer } from '../reducers/counter';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    HomePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -24,10 +21,7 @@ import { counterReducer } from '../reducers/counter';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    HomePage
   ],
   providers: []
 })
