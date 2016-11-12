@@ -1,9 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {AppState, Todo, TodoModel} from "../../app/common/interfaces";
 import {Observable} from "rxjs/Observable";
-import { NavController } from 'ionic-angular';
+import {ModalController , NavController } from 'ionic-angular';
 import {ADD_TODO, REMOVE_TODO, TOGGLE_TODO} from '../../app/common/actions';
+import {DetailsPage} from '../../pages/details/details'
 
 @Component({
   selector: 'page-home',
@@ -16,7 +17,7 @@ export class HomePage {
   private id: number = 0;
   public todos$: Observable<Todo[]>; 
 
-  constructor(public navCtrl: NavController, private _store: Store<AppState>) {
+  constructor(public navCtrl: NavController, private _store: Store<AppState>, public modalCtrl: ModalController) {
 
   }
 
@@ -26,7 +27,11 @@ export class HomePage {
       console.log(this.todos$);
   }
 
-  addTodo() {
+  showDetail(todo) {
+    let modal = this.modalCtrl.create(DetailsPage, { todo: todo });
+    modal.present();
+
+/*
     this._store.dispatch(
       {
         type: ADD_TODO,
@@ -37,6 +42,7 @@ export class HomePage {
         }
       }
     );
+  */
   }
 
 }

@@ -5,7 +5,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import {DetailsPage} from '../pages/details/details';
 import { StoreModule } from '@ngrx/store';
 import { todos } from './reducers/todos';
 import { visibilityFilter } from './reducers/visibility-filter';
@@ -16,7 +16,8 @@ import { visibilityFilter } from './reducers/visibility-filter';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    DetailsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -28,7 +29,8 @@ import { visibilityFilter } from './reducers/visibility-filter';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    DetailsPage
   ],
   providers: []
 })

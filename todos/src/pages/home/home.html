@@ -1,14 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+    <button ion-button icon-only (click) = "showDetail({})">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <button ion-button (tap) = "addTodo()">Add To Do</button>
+<ion-content>
   <ion-list inset>
     <ion-item *ngFor="let todo of todos$ | async">
-      <div item-left>Toma ya {{ todo.id }} - {{ todo.description}}</div>
+      {{todo.description}}
     </ion-item>
   </ion-list>
 </ion-content>
