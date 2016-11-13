@@ -1,18 +1,30 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>To Do List</ion-title>
     <ion-buttons end>
-    <button ion-button icon-only (click) = "showDetail({})">
+      <button ion-button icon-only (click)="showDetail(null)">
       <ion-icon name="add"></ion-icon>
     </button>
-  </ion-buttons>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+
   <ion-list inset>
-    <ion-item *ngFor="let todo of todos$ | async">
-      {{todo.description}}
+    <ion-item>
+      Filter: 
+      <select #selectList (change)="filterChanged(selectList.value)">
+        <option *ngFor="let filter of filters" value="{{filter.action}}">
+        {{filter.friendly}}
+        </option>
+      </select>
+      <strong> Completed: {{completedTodos$ | async}} / {{totalTodos$ | async}}</strong> 
+    </ion-item>
+    <ion-item *ngFor="let todo of filteredTodos$ | async" (tap)="showDetail(todo)">
+      {{todo.text}}
+      <ion-icon *ngIf="todo.complete" name="checkmark" item-right></ion-icon>
     </ion-item>
   </ion-list>
+
 </ion-content>
