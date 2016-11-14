@@ -1,4 +1,4 @@
-# ngrx-ionic-samples
+# ngrx-ionic-2-samples
 
 [Ionic 2](https://angular.io/) + [ngrx](https://github.com/ngrx) samples. This project ports [btroncone](https://github.com/ngrx)'s [ngrx-examples](https://github.com/btroncone/ngrx-examples) into Ionic 2
 
