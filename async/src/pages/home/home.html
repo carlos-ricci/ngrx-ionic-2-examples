@@ -7,5 +7,6 @@
 </ion-header>
 
 <ion-content padding>
+  <button ion-button (click)="dale()">Dale</button>
   <reddit-list [posts]="(redditPosts$ | async)" [isFetching]="false"></reddit-list>
 </ion-content>
