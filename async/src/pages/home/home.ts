@@ -24,7 +24,7 @@ export class HomePage {
 
   dale()
   {
-      this._store.dispatch({type: SELECT_REDDIT, payload: 'Mi carro'});
+      this._store.dispatch({type: SELECT_REDDIT, payload: 'Angular 2'});
   }
 
 }

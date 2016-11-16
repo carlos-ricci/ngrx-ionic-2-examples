@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Store, Action } from "@ngrx/store";
+import { Store } from "@ngrx/store";
 import { Actions, Effect } from "@ngrx/effects";
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/withLatestFrom";
+import "rxjs/add/operator/switchMap";
 
 
 import {
@@ -12,7 +13,7 @@ import {
     SELECT_REDDIT
 } from "../reducers/reddit";
 
-import {Reddit} from "../providers/reddit";
+import { Reddit } from "../providers/reddit";
 
 @Injectable()
 export class RedditEffects {
@@ -22,22 +23,30 @@ export class RedditEffects {
         private _reddit: Reddit,
         private _store: Store<any>
     ) {
-        
-     }
 
-     // Observable to the state of the store
-     private store$ = this._store.select('postsByReddit');
+    }
+
+    // Observable to the state of the store
+    private store$ = this._store.select('postsByReddit');
 
 
     @Effect() requestPosts$ = this._actions$
         .ofType(SELECT_REDDIT)
         .withLatestFrom(this.store$)
-        .filter(([action,state]) => this.shouldFetchPosts(state,action.payload))
-        .map( (result) =>  ({type: REQUEST_POSTS, payload: {reddit: result[0].payload}}));
+        .filter(([action, state]) => this.shouldFetchPosts(state, action.payload))
+        .map((result) => ({ type: REQUEST_POSTS, payload: { reddit: result[0].payload } }));
+
+    @Effect() fetchPosts$ = this._actions$
+            .ofType(REQUEST_POSTS) 
+            .switchMap((action) => (
+                this._reddit
+                    .fetchPosts(action.payload.reddit)
+                    .map(({data}) => ({ type: RECEIVE_POSTS, payload: {reddit: action.payload.reddit, data}})
+            )));  
 
 
     private shouldFetchPosts(state, reddit) {
-        if(!state.postsByReddit) {
+        if (!state.postsByReddit) {
             return true;
         }
         const posts = state.postsByReddit[reddit];
