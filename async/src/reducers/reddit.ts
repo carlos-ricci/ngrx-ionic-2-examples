@@ -20,7 +20,7 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export function selectedReddit(state : string = 'Angular 2', action: Action){
     switch(action.type) {
         case SELECT_REDDIT:
-            console.log("Ha cambiado: " + action.payload);
+            console.log("reducer selectedReddit. Received: " + action.payload);
             return action.payload;
         default:
             return state;
@@ -32,7 +32,7 @@ export function postsByReddit(state: {} = {}, action : Action) {
         case INVALIDATE_REDDIT:
         case RECEIVE_POSTS:
         case REQUEST_POSTS:
-           console.log("Reducing postsByReddit. See Payload below");
+           console.log("reducer postsByReddit. See Payload below");
            console.log(action.payload);
            return state;          
         default:

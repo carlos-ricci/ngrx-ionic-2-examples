@@ -3,7 +3,8 @@ import { Store, Action } from "@ngrx/store";
 import { Actions, Effect } from "@ngrx/effects";
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/do";
-import 'rxjs/add/operatod/withLatest';
+import "rxjs/add/operator/withLatestFrom";
+
 
 import {
     REQUEST_POSTS,
@@ -24,30 +25,22 @@ export class RedditEffects {
         
      }
 
+     // Observable to the state of the store
+     private store$ = this._store.select('postsByReddit');
 
 
     @Effect() requestPosts$ = this._actions$
         .ofType(SELECT_REDDIT)
-        .map(action => this.process(action));
-        //.map( action =>  ({type: REQUEST_POSTS, payload: {reddit: action.payload}}));
+        .withLatestFrom(this.store$)
+        .filter(([action,state]) => this.shouldFetchPosts(state,action.payload))
+        .map( (result) =>  ({type: REQUEST_POSTS, payload: {reddit: result[0].payload}}));
 
-        // console.log("User Selected seen in effect: " + action.payload);
-        /*
-        .subscribe((next) => {
-            console.log("User Selected: " + next);
-            return({type: REQUEST_POSTS, payload: {reddit: next}});
-        });*/
-        /*
-        .mapfilter(({state, action}) => this.shouldFetchPosts(state.postsByReddit, action.payload))
-        .map(({action}) => ({ type: REQUEST_POSTS, payload: { reddit: action.payload } }));
-        */
 
-    private process(action) {
-        return {type: REQUEST_POSTS, payload: {reddit: action.payload}};
-    }
-
-    private shouldFetchPosts(postsByReddit, reddit) {
-        const posts = postsByReddit[reddit];
+    private shouldFetchPosts(state, reddit) {
+        if(!state.postsByReddit) {
+            return true;
+        }
+        const posts = state.postsByReddit[reddit];
         if (!posts) {
             return true;
         }
