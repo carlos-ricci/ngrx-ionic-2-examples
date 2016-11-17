@@ -1,13 +1,6 @@
-<!--
-  Generated template for the RedditList component.
-
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
--->
-
-<h3 *ngIf="!isFetching">Loading...</h3>
+<h3 *ngIf="isFetching">Loading...</h3>
 <ion-list *ngIf="posts">
-  <ion-item *ngFor="let post of posts.data.children">
-    <a [href]="post.data.url">{{post.data.title}}</a>
+  <ion-item *ngFor="let post of posts">
+    <a [href]="post.url">{{post.title}}</a>
   </ion-item>
 </ion-list>

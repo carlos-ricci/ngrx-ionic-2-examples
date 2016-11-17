@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="dale()">Dale</button>
-  <reddit-list [posts]="(redditPosts$ | async)" [isFetching]="false"></reddit-list>
+  <!-- <button ion-button (click)="dale()">Dale</button> -->
+  <reddit-select (redditSelect) = "selectReddit($event)"></reddit-select>
+  <reddit-list [posts]="(redditModel.posts$ | async)" [isFetching]="(redditModel.isFetching$ | async)"></reddit-list>
 </ion-content>

@@ -1,0 +1,5 @@
+<select #selectList (change)="redditSelect.emit(selectList.value)">
+            <option *ngFor="let reddit of availableReddits">
+                {{reddit}}
+            </option>
+</select>

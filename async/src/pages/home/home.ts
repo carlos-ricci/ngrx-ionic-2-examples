@@ -1,26 +1,33 @@
 import {Component, ChangeDetectionStrategy } from '@angular/core';
 import {Store} from '@ngrx/store';
+import {RedditModel} from '../../providers/reddit-model';
 import {NavController} from 'ionic-angular';
-import {Reddit} from '../../providers/reddit';
-import {Observable} from "rxjs/Observable";
 import {
-    REQUEST_POSTS,
-    RECEIVE_POSTS,
     SELECT_REDDIT
 } from "../../reducers/reddit";
 
+
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePage {
 
-  public redditPosts$: Observable<any>;
+  constructor(public navCtrl: NavController, private _store: Store<any>, private redditModel: RedditModel) {
 
-  constructor(public navCtrl: NavController, private _store: Store<any>, private reddit:Reddit) {
-    this.redditPosts$ = reddit.fetchPosts('JoeInTransition');
+    redditModel.posts$.subscribe(
+      (x) => {
+        console.log('THIS IS THE POST$:');
+        console.log(x);
+      }
+    );
+    //this.redditPosts$ = reddit.fetchPosts('JoeInTransition');
   }
 
+  selectReddit(reddit: string) {
+    this._store.dispatch({type:SELECT_REDDIT, payload: reddit});
+  }
 
   dale()
   {

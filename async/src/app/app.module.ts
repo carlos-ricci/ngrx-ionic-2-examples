@@ -4,8 +4,10 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
+import {RedditModel} from '../providers/reddit-model';
 import {Reddit} from '../providers/reddit';
 import {RedditListComponent} from '../components/reddit-list/reddit-list';
+import {RedditSelectComponent} from '../components/reddit-select/reddit-select';
 import {selectedReddit, postsByReddit} from '../reducers/reddit';
 import {RedditEffects} from '../effects/reddit-effects';
 
@@ -13,6 +15,7 @@ import {RedditEffects} from '../effects/reddit-effects';
   declarations: [
     MyApp,
     RedditListComponent,
+    RedditSelectComponent,
     HomePage
   ],
   imports: [
@@ -27,6 +30,6 @@ import {RedditEffects} from '../effects/reddit-effects';
     MyApp,
     HomePage
   ],
-  providers: [Reddit]
+  providers: [RedditModel, Reddit]
 })
 export class AppModule {}

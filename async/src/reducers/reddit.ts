@@ -63,9 +63,11 @@ export function postsByReddit(state: {} = {}, action : Action) {
         case REQUEST_POSTS:
            console.log("reducer postsByReddit. See Payload below");
            console.log(action.payload);
-           return Object.assign({}, state, {
-                [action.payload.reddit]: posts(state[action.payload.reddit], action)
-            });          
+           const newState = Object.assign({}, state, {
+                [action.payload.reddit]: posts(state[action.payload.reddit], action)});
+           console.log("reducer will return as follows:");
+           console.log(newState);     
+           return newState;       
         default:
             return state;
     }
