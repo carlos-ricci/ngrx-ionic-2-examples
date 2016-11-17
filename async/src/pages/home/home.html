@@ -3,11 +3,13 @@
     <ion-title>
       Async
     </ion-title>
+    <ion-buttons end>
+      <reddit-select (redditSelect)="selectReddit($event)"></reddit-select>
+      <refresh-button (invalidateReddit)="invalidateReddit($event)" [selectedReddit]="(redditModel.selectedReddit$ | async)"></refresh-button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <!-- <button ion-button (click)="dale()">Dale</button> -->
-  <reddit-select (redditSelect) = "selectReddit($event)"></reddit-select>
   <reddit-list [posts]="(redditModel.posts$ | async)" [isFetching]="(redditModel.isFetching$ | async)"></reddit-list>
 </ion-content>

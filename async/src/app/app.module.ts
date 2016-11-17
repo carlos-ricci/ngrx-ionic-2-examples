@@ -7,6 +7,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {RedditModel} from '../providers/reddit-model';
 import {Reddit} from '../providers/reddit';
 import {RedditListComponent} from '../components/reddit-list/reddit-list';
+import {RefreshButtonComponent} from '../components/refresh-button/refresh-button';
 import {RedditSelectComponent} from '../components/reddit-select/reddit-select';
 import {selectedReddit, postsByReddit} from '../reducers/reddit';
 import {RedditEffects} from '../effects/reddit-effects';
@@ -16,6 +17,7 @@ import {RedditEffects} from '../effects/reddit-effects';
     MyApp,
     RedditListComponent,
     RedditSelectComponent,
+    RefreshButtonComponent,
     HomePage
   ],
   imports: [

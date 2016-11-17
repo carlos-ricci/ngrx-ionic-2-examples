@@ -3,7 +3,7 @@ import {Store} from '@ngrx/store';
 import {RedditModel} from '../../providers/reddit-model';
 import {NavController} from 'ionic-angular';
 import {
-    SELECT_REDDIT
+    SELECT_REDDIT, INVALIDATE_REDDIT
 } from "../../reducers/reddit";
 
 
@@ -14,7 +14,7 @@ import {
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private _store: Store<any>, private redditModel: RedditModel) {
+  constructor(public navCtrl: NavController, private _store: Store<any>, public redditModel: RedditModel) {
 
     redditModel.posts$.subscribe(
       (x) => {
@@ -29,9 +29,9 @@ export class HomePage {
     this._store.dispatch({type:SELECT_REDDIT, payload: reddit});
   }
 
-  dale()
-  {
-      this._store.dispatch({type: SELECT_REDDIT, payload: 'Angular 2'});
+  invalidateReddit(reddit : string){
+        this._store.dispatch({type: INVALIDATE_REDDIT, payload: {reddit}});
+        this._store.dispatch({type: SELECT_REDDIT, payload: reddit});
   }
 
 }
