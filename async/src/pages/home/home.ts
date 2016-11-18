@@ -15,14 +15,6 @@ import {
 export class HomePage {
 
   constructor(public navCtrl: NavController, private _store: Store<any>, public redditModel: RedditModel) {
-
-    redditModel.posts$.subscribe(
-      (x) => {
-        console.log('THIS IS THE POST$:');
-        console.log(x);
-      }
-    );
-    //this.redditPosts$ = reddit.fetchPosts('JoeInTransition');
   }
 
   selectReddit(reddit: string) {

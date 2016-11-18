@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Actions, Effect } from "@ngrx/effects";
+import { Logger } from "../providers/logger"
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/withLatestFrom";
@@ -21,7 +22,8 @@ export class RedditEffects {
     constructor(
         private _actions$: Actions,
         private _reddit: Reddit,
-        private _store: Store<any>
+        private _store: Store<any>,
+        private _logger: Logger
     ) {
 
     }
@@ -33,6 +35,7 @@ export class RedditEffects {
     @Effect() requestPosts$ = this._actions$
         .ofType(SELECT_REDDIT)
         .withLatestFrom(this.store$)
+        .do(([action, state]) => this._logger.log(state))
         .filter(([action, state]) => this.shouldFetchPosts(state, action.payload))
         .map((result) => ({ type: REQUEST_POSTS, payload: { reddit: result[0].payload } }));
 

@@ -20,6 +20,7 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export function selectedReddit(state : string = 'Angular 2', action: Action){
     switch(action.type) {
         case SELECT_REDDIT:
+            console.log("Entering Reducer: selectedReddit, Action: SELECT_REDDIT, Entering");
             return action.payload;
         default:
             return state;
@@ -32,7 +33,9 @@ const posts : ActionReducer<RedditPosts> = (state : RedditPosts = {
     posts: []
 }, action: Action) => {
   switch(action.type) {
+                  
       case INVALIDATE_REDDIT:
+          console.log("Entering Reducer: post, Action: INVALIDATE_REDDIT, Entering");
           return Object.assign({}, state, {
               didInvalidate: true
           });
