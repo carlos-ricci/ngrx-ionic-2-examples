@@ -34,13 +34,14 @@ export class RedditEffects {
 
     @Effect() requestPosts$ = this._actions$
         .ofType(SELECT_REDDIT)
+        .do(action => this._logger.log("Entering effect requestPosts for action SELECT",action))
         .withLatestFrom(this.store$)
-        .do(([action, state]) => this._logger.log(state))
         .filter(([action, state]) => this.shouldFetchPosts(state, action.payload))
         .map((result) => ({ type: REQUEST_POSTS, payload: { reddit: result[0].payload } }));
 
     @Effect() fetchPosts$ = this._actions$
             .ofType(REQUEST_POSTS) 
+            .do(action => this._logger.log("Entering effect fetchPosts for action REQUEST",action))
             .switchMap((action) => (
                 this._reddit
                     .fetchPosts(action.payload.reddit)

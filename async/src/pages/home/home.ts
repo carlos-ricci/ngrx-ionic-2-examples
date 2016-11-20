@@ -5,6 +5,7 @@ import {NavController} from 'ionic-angular';
 import {
     SELECT_REDDIT, INVALIDATE_REDDIT
 } from "../../reducers/reddit";
+import {Logger} from '../../providers/logger'
 
 
 @Component({
@@ -14,10 +15,11 @@ import {
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private _store: Store<any>, public redditModel: RedditModel) {
+  constructor(public navCtrl: NavController, private _store: Store<any>, public redditModel: RedditModel, private _logger: Logger) {
   }
 
   selectReddit(reddit: string) {
+    this._logger.log("User selected reddit: " + reddit);
     this._store.dispatch({type:SELECT_REDDIT, payload: reddit});
   }
 
