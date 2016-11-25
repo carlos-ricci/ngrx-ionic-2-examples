@@ -5,7 +5,6 @@ import { HomePage } from '../pages/home/home';
 import { cartReducer }  from '../reducers/cart';
 import { productsReducer } from '../reducers/products';
 import { StoreModule } from '@ngrx/store';
-import { combineReducers } from '@ngrx/store';
 
 @NgModule({
   declarations: [
