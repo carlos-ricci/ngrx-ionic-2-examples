@@ -5,6 +5,11 @@
   for more info on Angular 2 Components.
 -->
 
-<ion-item>
-  
+<ion-item >
+  <div item-content>{{product.title}} - {{product.price}}</div>
+  <button ion-button
+    (click)="addToCart.emit(product)"
+    [disabled]="product.inventory < 1">
+    {{product.inventory < 1? "Out of Stock" : "Add to Cart""}}
+  </button>
 </ion-item>

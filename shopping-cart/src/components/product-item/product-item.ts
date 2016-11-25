@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Output, Input, EventEmitter} from '@angular/core';
+import { IProduct } from '../../reducers/products';
+
+
+
 
 /*
   Generated class for the ProductItem component.
@@ -8,15 +12,19 @@ import { Component } from '@angular/core';
 */
 @Component({
   selector: 'product-item',
-  templateUrl: 'product-item.html'
+  templateUrl: 'product-item.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductItemComponent {
 
-  text: string;
+  @Input()
+  product: IProduct;
+
+  @Output()
+  addToCart: EventEmitter<IProduct> = new EventEmitter<IProduct>();
 
   constructor() {
-    console.log('Hello ProductItem Component');
-    this.text = 'Hello World';
+    
   }
 
 }
