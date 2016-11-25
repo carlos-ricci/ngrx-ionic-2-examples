@@ -1,7 +1,6 @@
 import '@ngrx/core/add/operator/select';
 import 'rxjs/add/operator/let';
 import 'rxjs/add/operator/map';
-
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -25,7 +24,7 @@ const initialState: ProductsState = {
     entities: {}
 };
 
-export default function (state = initialState, action: Action): ProductsState {
+export function productsReducer(state = initialState, action: Action) {
     switch (action.type) {
         case RECEIVED_PRODUCTS:
             return {

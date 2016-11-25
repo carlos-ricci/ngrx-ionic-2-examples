@@ -4,23 +4,15 @@ import 'rxjs/add/operator/let';
 import 'rxjs/add/observable/combineLatest'
 
 import { Observable } from 'rxjs/Observable';
-
 import { compose } from '@ngrx/core/compose';
-import { storeLogger } from 'ngrx-store-logger';
-import { combineReducers } from '@ngrx/store';
 
-import cartReducer, * as fromCart from './cart';
-import productsReducer, * as fromProducts from './products';
+import  * as fromCart from './cart';
+import  * as fromProducts from './products';
 
 export interface AppState {
     cart: fromCart.CartState;
     products: fromProducts.ProductsState;
 }
-
-export default compose(storeLogger(), combineReducers)({
-    cart: cartReducer,
-    products: productsReducer,
-});
 
 
 export function getCartState() {

@@ -14,7 +14,7 @@ const initialState: CartState = {
     productIds: [], quantityById: {}
 }
 
-export default function (state = initialState, action: Action): CartState {
+export function cartReducer(state = initialState, action: Action): CartState {
     switch (action.type) {
         case ADD_TO_CART:
             if (state.productIds.indexOf(action.payload) !== -1) {
