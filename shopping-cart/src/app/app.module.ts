@@ -7,11 +7,16 @@ import { productsReducer } from '../reducers/products';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ShopEffects} from '../effects/shop';
+import { ProductListComponent } from '../components/product-list/product-list';
+import { ProductItemComponent } from '../components/product-item/product-item';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ProductListComponent,
+    ProductItemComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),

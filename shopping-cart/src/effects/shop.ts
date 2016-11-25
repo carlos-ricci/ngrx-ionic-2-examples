@@ -19,6 +19,7 @@ export class ShopEffects {
 
     @Effect() load$ = this._actions$
         .ofType(REQUEST_PRODUCTS)
+        .do(()=>console.log("Action: REQUEST_PRODUCTS"))
         .map(action => JSON.stringify(action.payload))
         .switchMap(() => shop.default.getProducts(300))
         .map(res => {

@@ -1,0 +1,6 @@
+<ion-list>
+  <product-item *ngFor="let product of products"
+    [product] = "product"
+    (addToCart) = "addToCart.emit($event)">
+  </product-item>
+</ion-list>

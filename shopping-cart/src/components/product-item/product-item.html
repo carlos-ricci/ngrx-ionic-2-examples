@@ -1,15 +1,8 @@
-<!--
-  Generated template for the ProductItem component.
-
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
--->
-
 <ion-item >
-  <div item-content>{{product.title}} - {{product.price}}</div>
-  <button ion-button
+  <p item-label>{{product.title}} - {{product.price}}</p>
+  <button ion-button item-right
     (click)="addToCart.emit(product)"
     [disabled]="product.inventory < 1">
-    {{product.inventory < 1? "Out of Stock" : "Add to Cart""}}
+    {{product.inventory < 1? "Out of Stock" : "Add to Cart"}}
   </button>
 </ion-item>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import {getProducts, addToCart} from '../../actions/products';
@@ -9,15 +9,21 @@ import {getProductsAsArry, getCalculatedCartList} from '../../reducers';
 import { Subject } from 'rxjs';
 import {Store, Action} from '@ngrx/store';
 
+import { Observable } from 'rxjs/Observable';
+import { IProduct } from '../../reducers/products';
+
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePage {
 
   cartList: any;
-  products: any;
+  products: Observable<IProduct[]>;
   actions$ = new Subject<Action>();
+
+  
 
   addToCartAction = addToCart;
   checkoutAction = checkout;
@@ -29,6 +35,8 @@ export class HomePage {
 
       this.actions$.subscribe(store);
       this.actions$.next(getProducts());
+
+      this.products.subscribe((p) => console.log(p));
 
   }
 

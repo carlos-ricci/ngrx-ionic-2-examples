@@ -25,8 +25,10 @@ const initialState: ProductsState = {
 };
 
 export function productsReducer(state = initialState, action: Action) {
+    
     switch (action.type) {
         case RECEIVED_PRODUCTS:
+            console.log("Products Received",action.payload);
             return {
                 entities: Object.assign({},
                     state.entities,
@@ -57,5 +59,6 @@ export function getProductEntities() {
 export function getProductsAsArry() {
     return (state$: Observable<ProductsState>) => state$
         .let(getProductEntities())
+        .do(keys => console.log("Preparing the array of products with the products",keys))
         .map(res => Object.keys(res).map(key => res[key]));
 }
