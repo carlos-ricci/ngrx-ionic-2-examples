@@ -36,8 +36,6 @@ export class HomePage {
       this.actions$.subscribe(store);
       this.actions$.next(getProducts());
 
-      this.products.subscribe((p) => console.log(p));
-
   }
 
 }

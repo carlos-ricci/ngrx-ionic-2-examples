@@ -1,0 +1,12 @@
+<ion-list>
+  <ion-list-header>
+    Cart
+  </ion-list-header>
+  <cart-item *ngFor="let cartItem of cartList"
+    [cartItem] = "cartItem">
+  </cart-item>
+</ion-list>
+<button ion-button block (click) = "checkout.emit($event)">
+    Checkout
+</button>
+

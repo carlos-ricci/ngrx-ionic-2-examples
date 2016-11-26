@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter} from '@angular/core';
-import {ProductItem} from '../product-item';
 import {IProduct} from '../../reducers/products';
 
 /*

@@ -9,6 +9,10 @@
 <ion-content padding>
   <product-list
       [products] = "(products | async)"
-      (addToCart) = "action$.next(addToCartAction($event))">
+      (addToCart) = "actions$.next(addToCartAction($event))">
   </product-list>
+  <cart-list
+    [cartList] = "(cartList | async)"
+    (checkout) = "actions$.next(checkoutAction($event))">
+  </cart-list>
 </ion-content>

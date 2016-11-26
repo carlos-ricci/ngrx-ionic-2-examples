@@ -9,6 +9,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { ShopEffects} from '../effects/shop';
 import { ProductListComponent } from '../components/product-list/product-list';
 import { ProductItemComponent } from '../components/product-item/product-item';
+import { CartListComponent } from '../components/cart-list/cart-list';
+import { CartItemComponent } from '../components/cart-item/cart-item';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { ProductItemComponent } from '../components/product-item/product-item';
     MyApp,
     HomePage,
     ProductListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    CartListComponent,
+    CartItemComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
