@@ -11,17 +11,30 @@ The objective is to create an implentation in Ionic 2 out of the example apps of
 * Counter
 * Todos
 * Async
+* Shopping Cart
 
 ## Notes about ##
 
 * This application uses the ngrx version 2.0.0, which is slightly different than the version used in the inspiring project. These slight differences can be noticed on the following the following features:
   * Reducers have been implemented as regular functions, to avoid a problem with the AoT compiler.
   * The class `StateUpdates` and the operator `whenAction` are not available for V 2.0.0. Therefore, access to the store when using effects is solved in a with 'withLatestFrom'.
-  * Static version of `combineLatest` is not available either. This minimal change is solved too.
 
 ## Roadmap ##
 
-Next Sample to implement: shopping-cart. Hopefully coming soon.
+These samples work for the following Ionic Environment:
+
+Cordova CLI: 6.4.0
+Ionic Framework Version: 2.0.0-rc.3
+Ionic CLI Version: 2.1.8
+Ionic App Lib Version: 2.1.4
+Ionic App Scripts Version: 0.0.45
+ios-deploy version: Not installed
+ios-sim version: Not installed
+OS: Windows 10
+Node Version: v4.4.7
+Xcode version: Not installed
+
+We will be checked with newer versions of Ionic as long as they show up.
 
 ## Resources ##
 
