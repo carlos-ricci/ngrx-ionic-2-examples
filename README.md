@@ -34,7 +34,7 @@ OS: Windows 10
 Node Version: v4.4.7
 Xcode version: Not installed
 
-We will be checked with newer versions of Ionic as long as they show up.
+I will be checking with newer versions of Ionic as long as they show up.
 
 ## Resources ##
 
